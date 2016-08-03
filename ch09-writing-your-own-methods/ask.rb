@@ -9,7 +9,6 @@ def ask question
       if reply == 'no'
         return false
       end
-else
       puts 'Please answer Yes & No'
   end
 end
