@@ -1,11 +1,70 @@
-# in order to pass the rspec please follow the below rates of growth, orange production and age of death.
-# have your OrangeTree grow by 0.4 per year.
-# have it produce no oranges in its first 5 years
-# starting in its sixth year have it produce oranges at a rate of (height * 15 - 25) per year.
-# have the tree die after 25 years.
-# check out the rspec spec/ch13/orange_tree_spec.rb to see what strings we're looking for in the responses.
-
-
 class OrangeTree
-  # your code here
+
+def initialize
+@height = 0
+@orange_count = 0
+@alive = true
 end
+
+def height
+if @alive
+@height
+else
+  'Your lovely tree is dead :('
+end
+end
+
+
+def count_oranges
+  if @alive
+  @orange_count
+else
+  'your tree is not alive to have oranges'
+end
+end
+
+def one_year_passes
+if @alive
+  @height = @height + 1
+  @orange_count = 0
+  if @height > 10
+    @alive = false
+    'Your tree is dead now'
+elsif @height > 3
+  @orange_count = @orange_count + 1
+"your tree grew to #{@height} and has #{@orange_count} oranges"
+else
+  "your tree grew to #{@height} but too young to produce oranges"
+end
+else
+  'your tree is dead : ()'
+end
+end
+
+def pick_an_orange
+  if @alive
+    if @orange_count > 0
+  @orange_count = @orange_count - 1
+  puts " you have #{@orange_count} left"
+else
+  'There is no oranges'
+end
+else
+  'your tree is dead :( '
+end
+end
+end
+
+ot = OrangeTree.new
+6.times do
+ot.one_year_passes
+end
+
+puts(ot.one_year_passes)
+puts(ot.height)
+puts(ot.pick_an_orange)
+puts(ot.count_oranges)
+puts(ot.one_year_passes)
+puts(ot.one_year_passes)
+puts(ot.one_year_passes)
+puts(ot.one_year_passes)
